@@ -3,8 +3,8 @@ package com.seanshubin.template.scala.web.client
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
 
-import com.seanshubin.http.apache_client.HttpSender
-import com.seanshubin.http.values.{RequestValue, ResponseValue, Sender}
+import com.seanshubin.http.values.client.apache.HttpSender
+import com.seanshubin.http.values.core.{RequestValue, ResponseValue, Sender}
 import com.seanshubin.template.scala.web.core.json.{JsonMarshaller, JsonMarshallerImpl}
 
 object JavascriptDownloaderApp extends App {

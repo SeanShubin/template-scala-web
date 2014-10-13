@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.console
 
-import com.seanshubin.http.values._
+import com.seanshubin.http.values.core._
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.template.scala.web.server.JettyHttpServer
 

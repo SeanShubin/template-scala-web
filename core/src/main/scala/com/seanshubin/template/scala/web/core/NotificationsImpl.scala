@@ -2,7 +2,7 @@ package com.seanshubin.template.scala.web.core
 
 import java.io.{PrintWriter, StringWriter}
 
-import com.seanshubin.http.values.{RequestValue, ResponseValue}
+import com.seanshubin.http.values.core.{RequestValue, ResponseValue}
 import org.joda.time.{DateTime, DateTimeZone}
 
 class NotificationsImpl(clock:Clock) extends Notifications {

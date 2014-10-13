@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.core
 
-import com.seanshubin.http.values.ContentType
+import com.seanshubin.http.values.core.ContentType
 
 class ConfigurationFactoryImpl extends ConfigurationFactory {
   override def validate(args: Seq[String]): Either[Seq[String], Configuration] = {

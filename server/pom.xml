@@ -15,7 +15,7 @@
         </dependency>
         <dependency>
             <groupId>com.seanshubin</groupId>
-            <artifactId>http-values-jetty-server</artifactId>
+            <artifactId>http-values-server-jetty</artifactId>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>

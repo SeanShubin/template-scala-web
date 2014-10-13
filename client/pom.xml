@@ -15,7 +15,7 @@
         </dependency>
         <dependency>
             <groupId>com.seanshubin</groupId>
-            <artifactId>http-values-apache-client</artifactId>
+            <artifactId>http-values-client-apache</artifactId>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>

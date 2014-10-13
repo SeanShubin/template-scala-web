@@ -2,7 +2,7 @@ package com.seanshubin.template.scala.web.server
 
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 
-import com.seanshubin.http.values.{IoUtil, RequestValue, ResponseValue}
+import com.seanshubin.http.values.core.{IoUtil, RequestValue, ResponseValue}
 
 import scala.collection.JavaConversions
 

@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.core
 
-import com.seanshubin.http.values.{RequestValue, ResponseValue}
+import com.seanshubin.http.values.core.{RequestValue, ResponseValue}
 
 trait Notifications {
   def request(request:RequestValue)

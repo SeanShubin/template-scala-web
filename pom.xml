@@ -54,12 +54,12 @@
             </dependency>
             <dependency>
                 <groupId>com.seanshubin</groupId>
-                <artifactId>http-values-apache-client</artifactId>
+                <artifactId>http-values-client-apache</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.seanshubin</groupId>
-                <artifactId>http-values-jetty-server</artifactId>
+                <artifactId>http-values-server-jetty</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>

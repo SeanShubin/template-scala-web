@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper, Ser
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 
 import scala.collection.JavaConversions
-import com.seanshubin.http.values.StringUtil
+import com.seanshubin.http.values.core.StringUtil
 
 class JsonMarshallerImpl extends JsonMarshaller {
   private val mapper = new ObjectMapper()
