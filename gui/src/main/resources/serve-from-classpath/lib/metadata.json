@@ -1,0 +1,89 @@
+{
+  "lastChecked" : {
+    "timestamp" : 1413085215962,
+    "timestampInLocalTime" : "2014-10-11T20:40:15.962-07:00"
+  },
+  "files" : {
+    "underscore.string.js" : {
+      "file" : "underscore.string.js",
+      "origin" : "http://epeli.github.io/underscore.string/lib/underscore.string.js",
+      "downloaded" : {
+        "timestamp" : 1413085215007,
+        "timestampInLocalTime" : "2014-10-11T20:40:15.007-07:00"
+      },
+      "status" : "up to date"
+    },
+    "domReady.js" : {
+      "file" : "domReady.js",
+      "origin" : "https://raw.githubusercontent.com/requirejs/domReady/latest/domReady.js",
+      "downloaded" : {
+        "timestamp" : 1413085214004,
+        "timestampInLocalTime" : "2014-10-11T20:40:14.004-07:00"
+      },
+      "status" : "up to date"
+    },
+    "require.js" : {
+      "file" : "require.js",
+      "origin" : "http://requirejs.org/docs/release/2.1.15/comments/require.js",
+      "downloaded" : {
+        "timestamp" : 1413085212960,
+        "timestampInLocalTime" : "2014-10-11T20:40:12.960-07:00"
+      },
+      "status" : "up to date"
+    },
+    "jquery-2.1.1.js" : {
+      "file" : "jquery-2.1.1.js",
+      "origin" : "http://code.jquery.com/jquery-2.1.1.js",
+      "downloaded" : {
+        "timestamp" : 1413085214175,
+        "timestampInLocalTime" : "2014-10-11T20:40:14.175-07:00"
+      },
+      "status" : "up to date"
+    },
+    "qunit-1.15.0.css" : {
+      "file" : "qunit-1.15.0.css",
+      "origin" : "http://code.jquery.com/qunit/qunit-1.15.0.css",
+      "downloaded" : {
+        "timestamp" : 1413085215138,
+        "timestampInLocalTime" : "2014-10-11T20:40:15.138-07:00"
+      },
+      "status" : "up to date"
+    },
+    "qunit-1.15.0.js" : {
+      "file" : "qunit-1.15.0.js",
+      "origin" : "http://code.jquery.com/qunit/qunit-1.15.0.js",
+      "downloaded" : {
+        "timestamp" : 1413085215091,
+        "timestampInLocalTime" : "2014-10-11T20:40:15.091-07:00"
+      },
+      "status" : "up to date"
+    },
+    "sinon-1.10.3.js" : {
+      "file" : "sinon-1.10.3.js",
+      "origin" : "http://sinonjs.org/releases/sinon-1.10.3.js",
+      "downloaded" : {
+        "timestamp" : 1413085215961,
+        "timestampInLocalTime" : "2014-10-11T20:40:15.961-07:00"
+      },
+      "status" : "up to date"
+    },
+    "underscore.js" : {
+      "file" : "underscore.js",
+      "origin" : "http://underscorejs.org/underscore.js",
+      "downloaded" : {
+        "timestamp" : 1413085214554,
+        "timestampInLocalTime" : "2014-10-11T20:40:14.554-07:00"
+      },
+      "status" : "up to date"
+    },
+    "text.js" : {
+      "file" : "text.js",
+      "origin" : "https://raw.githubusercontent.com/requirejs/text/latest/text.js",
+      "downloaded" : {
+        "timestamp" : 1413085213580,
+        "timestampInLocalTime" : "2014-10-11T20:40:13.580-07:00"
+      },
+      "status" : "up to date"
+    }
+  }
+}
