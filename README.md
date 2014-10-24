@@ -3,7 +3,10 @@ Scala Web Template
 
 Skeleton for Scala Web Application
 
-Depends on [http values](https://github.com/SeanShubin/http-values)
+Dependencies
+
+- [http values](https://github.com/SeanShubin/http-values)
+- [web sync](https://github.com/SeanShubin/web-sync)
 
 Usage assuming port 4000 and javascript overrides at gui/src/main/resources/
 

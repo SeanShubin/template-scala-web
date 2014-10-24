@@ -1,0 +1,20 @@
+{
+
+    "reportPathParts": ["gui", "src", "main", "resources", "serve-from-classpath", "lib", "web-sync-report.json"],
+    "downloadsByDestination": [
+        {
+            "destinationPathParts": ["gui", "src", "main", "resources", "serve-from-classpath", "lib"],
+            "sourceUrls": [
+                "http://requirejs.org/docs/release/2.1.15/comments/require.js",
+                "https://raw.githubusercontent.com/requirejs/text/latest/text.js",
+                "https://raw.githubusercontent.com/requirejs/domReady/latest/domReady.js",
+                "http://code.jquery.com/jquery-2.1.1.js",
+                "http://underscorejs.org/underscore.js",
+                "http://epeli.github.io/underscore.string/lib/underscore.string.js",
+                "http://code.jquery.com/qunit/qunit-1.15.0.js",
+                "http://code.jquery.com/qunit/qunit-1.15.0.css",
+                "http://sinonjs.org/releases/sinon-1.10.3.js"
+            ]
+        }
+    ]
+}
