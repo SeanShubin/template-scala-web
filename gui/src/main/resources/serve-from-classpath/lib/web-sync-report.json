@@ -1,46 +1,55 @@
 [ {
   "url" : "http://requirejs.org/docs/release/2.1.15/comments/require.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\require.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "cba8e7dbd7b7289150954fbce84d7b1213e4d7ba50e602c78aff3be8a10606c1",
   "remoteHash" : "cba8e7dbd7b7289150954fbce84d7b1213e4d7ba50e602c78aff3be8a10606c1"
 }, {
   "url" : "https://raw.githubusercontent.com/requirejs/text/latest/text.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\text.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "060eff42292d4c88eb111554ff6a3e2942bcd24019b978f7e6e35f57c757dad0",
   "remoteHash" : "060eff42292d4c88eb111554ff6a3e2942bcd24019b978f7e6e35f57c757dad0"
 }, {
   "url" : "https://raw.githubusercontent.com/requirejs/domReady/latest/domReady.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\domReady.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "ec290b1238d503170b7eea6c31fb8b7a18ef9cb62d719850436d2375d0fc219e",
   "remoteHash" : "ec290b1238d503170b7eea6c31fb8b7a18ef9cb62d719850436d2375d0fc219e"
 }, {
   "url" : "http://code.jquery.com/jquery-2.1.1.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\jquery-2.1.1.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "140ff438eaaede046f1ceba27579d16dc980595709391873fa9bf74d7dbe53ac",
   "remoteHash" : "140ff438eaaede046f1ceba27579d16dc980595709391873fa9bf74d7dbe53ac"
 }, {
   "url" : "http://underscorejs.org/underscore.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\underscore.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "99317bc4b5be833de9c57a7dc3531dae585484b75f81c49339a0824681710fdc",
   "remoteHash" : "99317bc4b5be833de9c57a7dc3531dae585484b75f81c49339a0824681710fdc"
 }, {
   "url" : "http://epeli.github.io/underscore.string/lib/underscore.string.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\underscore.string.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "d49de4da875a6b3c7ebe2ad63435b32433134a57defcfe2f2417b45954a2f43e",
   "remoteHash" : "d49de4da875a6b3c7ebe2ad63435b32433134a57defcfe2f2417b45954a2f43e"
 }, {
   "url" : "http://code.jquery.com/qunit/qunit-1.15.0.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\qunit-1.15.0.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "13571a9499a3519ff52e222d993669d8d31e46908fb6ba8ad93aeb014cbf8d36",
   "remoteHash" : "13571a9499a3519ff52e222d993669d8d31e46908fb6ba8ad93aeb014cbf8d36"
 }, {
   "url" : "http://code.jquery.com/qunit/qunit-1.15.0.css",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\qunit-1.15.0.css",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "ab12b403473b30f1b8eb594f50a449daa5451c3726b1928603804e65ebde9e4b",
   "remoteHash" : "ab12b403473b30f1b8eb594f50a449daa5451c3726b1928603804e65ebde9e4b"
 }, {
   "url" : "http://sinonjs.org/releases/sinon-1.10.3.js",
   "path" : "gui\\src\\main\\resources\\serve-from-classpath\\lib\\sinon-1.10.3.js",
-  "status" : "download",
+  "status" : "same",
+  "localHash" : "1b56e2ee50e279a80da81082379832ba32b7cf4c20c3eb92a6c78a42606b68fc",
   "remoteHash" : "1b56e2ee50e279a80da81082379832ba32b7cf4c20c3eb92a6c78a42606b68fc"
 } ]
