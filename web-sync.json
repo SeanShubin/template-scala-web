@@ -1,6 +1,7 @@
 {
 
     "reportPathParts": ["gui", "src", "main", "resources", "serve-from-classpath", "lib", "web-sync-report.json"],
+    "logPathParts": ["gui", "src", "main", "resources", "serve-from-classpath", "lib", "web-sync-report.txt"],
     "downloadsByDestination": [
         {
             "destinationPathParts": ["gui", "src", "main", "resources", "serve-from-classpath", "lib"],
