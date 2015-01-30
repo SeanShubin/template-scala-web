@@ -11,7 +11,7 @@
                 "https://raw.githubusercontent.com/requirejs/domReady/latest/domReady.js",
                 "http://code.jquery.com/jquery-2.1.1.js",
                 "http://underscorejs.org/underscore.js",
-                "http://epeli.github.io/underscore.string/dist/underscore.string/lib/underscore.string.js",
+                "https://raw.githubusercontent.com/epeli/underscore.string/master/dist/underscore.string.js",
                 "http://code.jquery.com/qunit/qunit-1.15.0.js",
                 "http://code.jquery.com/qunit/qunit-1.15.0.css",
                 "http://sinonjs.org/releases/sinon-1.10.3.js"
