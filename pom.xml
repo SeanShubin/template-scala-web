@@ -23,6 +23,11 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>sean-datomic</id>
+            <name>sean-datomic</name>
+            <url>http://thoughtfulcraftsmanship.com/nexus/content/repositories/datomic/</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -159,10 +164,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>sean</id>
-            <url>http://thoughtfulcraftsmanship.com/nexus/content/repositories/sean/</url>
-        </repository>
-    </distributionManagement>
 </project>
