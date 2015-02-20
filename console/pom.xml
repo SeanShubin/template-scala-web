@@ -11,17 +11,17 @@
         <dependency>
             <groupId>com.seanshubin</groupId>
             <artifactId>template-scala-web-core</artifactId>
-            <version>${pom.parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.seanshubin</groupId>
             <artifactId>template-scala-web-server</artifactId>
-            <version>${pom.parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.seanshubin</groupId>
             <artifactId>template-scala-web-gui</artifactId>
-            <version>${pom.parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
