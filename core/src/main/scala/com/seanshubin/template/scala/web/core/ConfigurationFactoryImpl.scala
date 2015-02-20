@@ -10,7 +10,7 @@ class ConfigurationFactoryImpl extends ConfigurationFactory {
         val port = portAsString.toInt
         val maybeOverridePath = if (args.length == 2) Some(args(1)) else None
         val classLoaderPrefix = "serve-from-classpath"
-        val redirects = Map("/" -> "index.html")
+        val redirects = Map("/" -> "/index.html")
         val charset = "utf-8"
         val contentByExtension = Map(
           ".js" -> ContentType("text/javascript", Some(charset)),
