@@ -31,6 +31,13 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
+            <id>sean</id>
+            <url>http://thoughtfulcraftsmanship.com/nexus/content/repositories/sean/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
             <id>onejar</id>
             <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
         </pluginRepository>
