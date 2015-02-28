@@ -30,7 +30,7 @@
     "dependency-report"
   ],
   "classLimits": {
-    "depth": 11,
+    "depth": 6,
     "complexity": 100,
     "cycleCount": 0
   },
