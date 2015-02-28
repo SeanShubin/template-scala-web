@@ -4,7 +4,6 @@ import java.io.{PrintWriter, StringWriter}
 
 import com.seanshubin.devon.core.devon.DevonMarshaller
 import com.seanshubin.http.values.core.{RequestValue, ResponseValue}
-import org.joda.time.{DateTime, DateTimeZone}
 
 class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, emit: String => Unit) extends Notifications {
   private val lock = new Object()
@@ -44,8 +43,7 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
   }
 
   def wrapLines(caption: String, lines: Seq[String]): Seq[String] = {
-    val timeZone = DateTimeZone.forID("UTC")
-    val now = new DateTime(clock.currentTimeMillis(), timeZone)
+    val now = clock.zonedDateTimeNow()
     val timeString = now.toString
     val stars = "*" * 30
     val headerBody = s"$stars $caption ($timeString) $stars"

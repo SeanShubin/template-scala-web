@@ -1,5 +1,7 @@
 package com.seanshubin.template.scala.web.core
 
+import java.time.ZonedDateTime
+
 trait Clock {
-  def currentTimeMillis(): Long
+  def zonedDateTimeNow(): ZonedDateTime
 }

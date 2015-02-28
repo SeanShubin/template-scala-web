@@ -1,5 +1,7 @@
 package com.seanshubin.template.scala.web.core
 
+import java.time.ZonedDateTime
+
 class ClockImpl extends Clock {
-  override def currentTimeMillis(): Long = System.currentTimeMillis()
+  override def zonedDateTimeNow: ZonedDateTime = ZonedDateTime.now()
 }
