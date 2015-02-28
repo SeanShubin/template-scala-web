@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.seanshubin</groupId>
     <artifactId>template-scala-web</artifactId>
@@ -65,24 +66,14 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
+                <groupId>com.seanshubin</groupId>
+                <artifactId>utility-file-system</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
                 <version>2.11.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-scala_2.11</artifactId>
-                <version>2.5.1</version>
-            </dependency>
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>2.7</version>
-            </dependency>
-            <dependency>
-                <groupId>org.joda</groupId>
-                <artifactId>joda-convert</artifactId>
-                <version>1.7</version>
             </dependency>
             <dependency>
                 <groupId>org.easymock</groupId>

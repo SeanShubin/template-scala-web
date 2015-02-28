@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.{JsonFactory, JsonParseException}
 import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper, SerializationFeature}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import com.seanshubin.http.values.core.StringUtil
 
 import scala.collection.JavaConversions
-import com.seanshubin.http.values.core.StringUtil
 
 class JsonMarshallerImpl extends JsonMarshaller {
   private val mapper = new ObjectMapper()

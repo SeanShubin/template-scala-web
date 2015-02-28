@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.core.json
 
-import com.seanshubin.template.scala.web.core.json.JsonAbstractSyntaxTree.{JsonArray, JsonValue, JsonObject}
+import com.seanshubin.template.scala.web.core.json.JsonAbstractSyntaxTree.{JsonArray, JsonObject, JsonValue}
 
 import scala.language.dynamics
 

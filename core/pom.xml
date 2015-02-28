@@ -17,6 +17,10 @@
             <artifactId>devon-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.seanshubin</groupId>
+            <artifactId>utility-file-system</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
         </dependency>

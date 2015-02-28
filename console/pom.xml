@@ -58,7 +58,8 @@
                             <mainClass>com.seanshubin.template.scala.web.console.ConsoleApplication</mainClass>
                             <filename>template-scala-web.jar</filename>
                             <manifestEntries>
-                                <One-Jar-URL-Factory>com.simontuffs.onejar.JarClassLoader$OneJarURLFactory</One-Jar-URL-Factory>
+                                <One-Jar-URL-Factory>com.simontuffs.onejar.JarClassLoader$OneJarURLFactory
+                                </One-Jar-URL-Factory>
                             </manifestEntries>
                         </configuration>
                         <goals>
