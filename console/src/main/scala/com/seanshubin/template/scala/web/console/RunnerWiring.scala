@@ -7,10 +7,12 @@ import com.seanshubin.template.scala.web.server.JettyHttpServer
 trait RunnerWiring {
   def configuration: Configuration
 
+  lazy val classLoaderPrefix:String = "serve-from-classpath"
+
   lazy val redirectReceiver: Receiver = new RedirectReceiver(configuration.redirectFunction)
   lazy val classLoader: ClassLoader = this.getClass.getClassLoader
   lazy val classLoaderReceiver: Receiver = new ClassLoaderReceiver(
-    classLoader, configuration.classLoaderPrefix, configuration.contentByExtension, configuration.overridePath)
+    classLoader, classLoaderPrefix, configuration.contentByExtension, configuration.overridePath)
   lazy val echoReceiver: Receiver = new EchoReceiver()
   lazy val redirectRoute:Route = new RedirectRoute("redirect", redirectReceiver, configuration.redirectFunction)
   lazy val classLoaderRoute:Route = new ClassLoaderRoute(

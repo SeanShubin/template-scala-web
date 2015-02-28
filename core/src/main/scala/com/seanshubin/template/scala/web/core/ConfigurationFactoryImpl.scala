@@ -9,7 +9,6 @@ class ConfigurationFactoryImpl extends ConfigurationFactory {
       try {
         val port = portAsString.toInt
         val maybeOverridePath = if (args.length == 2) Some(args(1)) else None
-        val classLoaderPrefix = "serve-from-classpath"
         val redirects = Map("/" -> "/index.html")
         val charset = "utf-8"
         val contentByExtension = Map(
@@ -18,7 +17,7 @@ class ConfigurationFactoryImpl extends ConfigurationFactory {
           ".html" -> ContentType("text/html", Some(charset)),
           ".ico" -> ContentType("image/x-icon", None)
         )
-        Right(Configuration(port, classLoaderPrefix, maybeOverridePath, contentByExtension, redirects))
+        Right(Configuration(port, maybeOverridePath, contentByExtension, redirects))
       } catch {
         case ex: NumberFormatException => Left(Seq(s"port must be a number, got '$portAsString' instead"))
       }
