@@ -1,7 +1,5 @@
 package com.seanshubin.template.scala.web.core
 
-import com.seanshubin.http.values.core.ContentType
-
 class ConfigurationFactoryImpl extends ConfigurationFactory {
   override def validate(args: Seq[String]): Either[Seq[String], Configuration] = {
     if (args.length == 1 || args.length == 2) {
@@ -9,15 +7,7 @@ class ConfigurationFactoryImpl extends ConfigurationFactory {
       try {
         val port = portAsString.toInt
         val maybeOverridePath = if (args.length == 2) Some(args(1)) else None
-        val redirects = Map("/" -> "/index.html")
-        val charset = "utf-8"
-        val contentByExtension = Map(
-          ".js" -> ContentType("text/javascript", Some(charset)),
-          ".css" -> ContentType("text/css", Some(charset)),
-          ".html" -> ContentType("text/html", Some(charset)),
-          ".ico" -> ContentType("image/x-icon", None)
-        )
-        Right(Configuration(port, maybeOverridePath, contentByExtension, redirects))
+        Right(Configuration(port, maybeOverridePath))
       } catch {
         case ex: NumberFormatException => Left(Seq(s"port must be a number, got '$portAsString' instead"))
       }

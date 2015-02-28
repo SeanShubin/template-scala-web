@@ -8,15 +8,23 @@ trait RunnerWiring {
   def configuration: Configuration
 
   lazy val classLoaderPrefix:String = "serve-from-classpath"
-
-  lazy val redirectReceiver: Receiver = new RedirectReceiver(configuration.redirectFunction)
+  lazy val redirects:Map[String, String] = Map("/" -> "/index.html")
+  lazy val charset:String = "utf-8"
+  lazy val contentByExtension:Map[String, ContentType] = Map(
+    ".js" -> ContentType("text/javascript", Some(charset)),
+    ".css" -> ContentType("text/css", Some(charset)),
+    ".html" -> ContentType("text/html", Some(charset)),
+    ".ico" -> ContentType("image/x-icon", None)
+  )
+  lazy val redirectFunction:String => Option[String] = uri => redirects.get(uri)
+  lazy val redirectReceiver: Receiver = new RedirectReceiver(redirectFunction)
   lazy val classLoader: ClassLoader = this.getClass.getClassLoader
   lazy val classLoaderReceiver: Receiver = new ClassLoaderReceiver(
-    classLoader, classLoaderPrefix, configuration.contentByExtension, configuration.overridePath)
+    classLoader, classLoaderPrefix, contentByExtension, configuration.overridePath)
   lazy val echoReceiver: Receiver = new EchoReceiver()
-  lazy val redirectRoute:Route = new RedirectRoute("redirect", redirectReceiver, configuration.redirectFunction)
+  lazy val redirectRoute:Route = new RedirectRoute("redirect", redirectReceiver, redirectFunction)
   lazy val classLoaderRoute:Route = new ClassLoaderRoute(
-    "class-loader", classLoaderReceiver, configuration.contentByExtension)
+    "class-loader", classLoaderReceiver, contentByExtension)
   lazy val routes:Seq[Route] = Seq(redirectRoute, classLoaderRoute)
   lazy val dispatcher:Receiver = new DispatchingReceiver(routes)
   lazy val clock:Clock = new ClockImpl()
