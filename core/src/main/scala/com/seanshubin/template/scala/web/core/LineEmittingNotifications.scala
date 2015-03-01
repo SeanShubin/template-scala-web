@@ -33,6 +33,10 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
     pretty.foreach(emit)
   }
 
+  override def configurationError(lines: Seq[String]): Unit = {
+    lines.foreach(emit)
+  }
+
   def exceptionLines(ex: Throwable): Seq[String] = {
     val stringWriter = new StringWriter()
     val printWriter = new PrintWriter(stringWriter)

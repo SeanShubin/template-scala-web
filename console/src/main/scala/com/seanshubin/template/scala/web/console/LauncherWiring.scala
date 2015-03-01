@@ -10,7 +10,6 @@ trait LauncherWiring {
   def commandLineArguments: Seq[String]
 
   lazy val emitLine: String => Unit = println
-  lazy val errorHandler: ErrorHandler = new ErrorHandlerImpl(emitLine)
   lazy val fileSystem: FileSystemIntegration = new FileSystemIntegrationImpl
   lazy val devonMarshaller: DevonMarshaller = new DefaultDevonMarshaller
   lazy val charset: Charset = StandardCharsets.UTF_8
@@ -20,5 +19,5 @@ trait LauncherWiring {
     fileSystem, devonMarshaller, charset)
   lazy val runnerFactory: RunnerFactory = new RunnerFactoryImpl()
   lazy val launcher: Launcher = new LauncherImpl(
-    commandLineArguments, configurationFactory, errorHandler, runnerFactory)
+    commandLineArguments, configurationFactory, runnerFactory, notifications)
 }

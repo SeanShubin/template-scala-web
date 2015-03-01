@@ -21,12 +21,12 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
 
       override def expected = Right(Configuration(4000, Some("gui/src/main/resources/"), Some("/template")))
 
-      expecting {
+      override def expecting = () => {
         mockFileSystem.exists(configFilePath).andReturn(true)
         mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
       }
 
-      whenExecuting(mocks: _*) {
+      override def whenExecuting = () => {
         val actual = configurationFactory.validate(args)
         assert(actual === expected)
       }
@@ -43,12 +43,12 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
 
       override def expected = Right(Configuration(5000, None, None))
 
-      expecting {
+      override def expecting = () => {
         mockFileSystem.exists(configFilePath).andReturn(true)
         mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
       }
 
-      whenExecuting(mocks: _*) {
+      override def whenExecuting = () => {
         val actual = configurationFactory.validate(args)
         assert(actual === expected)
       }
@@ -66,11 +66,11 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
 
       override def expected = Left(Seq("Configuration file named 'environment.txt' not found"))
 
-      expecting {
+      override def expecting = () => {
         mockFileSystem.exists(configFilePath).andReturn(false)
       }
 
-      whenExecuting(mocks: _*) {
+      override def whenExecuting = () => {
         val actual = configurationFactory.validate(args)
         assert(actual === expected)
       }
@@ -89,12 +89,12 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
       override def expected = Left(Seq(
         "There was a problem reading the configuration file 'environment.txt': Missing value for port of type Int"))
 
-      expecting {
+      override def expecting = () => {
         mockFileSystem.exists(configFilePath).andReturn(true)
         mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
       }
 
-      whenExecuting(mocks: _*) {
+      override def whenExecuting = () => {
         val actual = configurationFactory.validate(args)
         assert(actual === expected)
       }
@@ -107,19 +107,19 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
 
       override def expected = Left(Seq("There was a problem reading the configuration file 'environment.txt': Could not match 'element', expected one of: map, array, string, null"))
 
-      expecting {
+      override def expecting = () => {
         mockFileSystem.exists(configFilePath).andReturn(true)
         mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
       }
 
-      whenExecuting(mocks: _*) {
+      override def whenExecuting = () => {
         val actual = configurationFactory.validate(args)
         assert(actual === expected)
       }
     }
   }
 
-  abstract class Helper {
+  trait Helper {
     def content: String
 
     def expected: Either[Seq[String], Configuration]
@@ -133,6 +133,15 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
     val configFilePath = Paths.get(configFileName)
     val contentBytes = content.getBytes(charset)
     val mocks = Array(mockFileSystem)
+
+    def expecting: () => Unit
+
+    def whenExecuting: () => Unit
+
+    expecting()
+    EasyMockSugar.whenExecuting(mockFileSystem) {
+      whenExecuting()
+    }
   }
 
 }

@@ -10,4 +10,6 @@ trait Notifications {
   def exception(runtimeException: RuntimeException)
 
   def effectiveConfiguration(configuration: Configuration)
+
+  def configurationError(lines: Seq[String])
 }
