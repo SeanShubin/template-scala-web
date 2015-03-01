@@ -8,7 +8,9 @@ class LauncherImpl(args: Seq[String],
     val errorOrConfiguration = configurationFactory.validate(args)
     errorOrConfiguration match {
       case Left(error) => notifications.configurationError(error)
-      case Right(configuration) => runnerFactory.createRunner(configuration).run()
+      case Right(configuration) =>
+        notifications.effectiveConfiguration(configuration)
+        runnerFactory.createRunner(configuration).run()
     }
   }
 }

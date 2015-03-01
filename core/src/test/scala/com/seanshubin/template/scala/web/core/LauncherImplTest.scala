@@ -8,6 +8,7 @@ class LauncherImplTest extends FunSuite with EasyMockSugar {
     new Helper {
       override def expecting = () => {
         configurationFactory.validate(args).andReturn(validationSuccess)
+        notifications.effectiveConfiguration(validConfiguration)
         runnerFactory.createRunner(validConfiguration).andReturn(runner)
         runner.run()
       }
