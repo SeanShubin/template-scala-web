@@ -101,7 +101,7 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
     }
   }
 
-  test("malformed configuration required field") {
+  test("malformed configuration") {
     new Helper {
       override def content = "{"
 
