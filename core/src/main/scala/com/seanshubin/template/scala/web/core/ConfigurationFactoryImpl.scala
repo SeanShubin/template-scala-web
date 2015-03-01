@@ -8,8 +8,7 @@ import com.seanshubin.utility.file_system.FileSystemIntegration
 
 class ConfigurationFactoryImpl(fileSystem: FileSystemIntegration,
                                devonMarshaller: DevonMarshaller,
-                               charset: Charset,
-                               notifications: Notifications) extends ConfigurationFactory {
+                               charset: Charset) extends ConfigurationFactory {
   val sampleConfiguration: Configuration = Configuration(
     port = 4000,
     servePathOverride = Some("gui/src/main/resources/"),
@@ -25,7 +24,6 @@ class ConfigurationFactoryImpl(fileSystem: FileSystemIntegration,
           val text = new String(bytes, charset)
           val devon = devonMarshaller.fromString(text)
           val config = devonMarshaller.toValue(devon, classOf[Configuration])
-          notifications.effectiveConfiguration(config)
           Right(config)
         } else {
           Left(Seq(s"Configuration file named '$configFilePath' not found"))

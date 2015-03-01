@@ -14,10 +14,10 @@ trait LauncherWiring {
   lazy val fileSystem: FileSystemIntegration = new FileSystemIntegrationImpl
   lazy val devonMarshaller: DevonMarshaller = new DefaultDevonMarshaller
   lazy val charset: Charset = StandardCharsets.UTF_8
-  lazy val clock: Clock = new ClockImpl
+  lazy val clock: Clock = new ClockIntegration
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val configurationFactory: ConfigurationFactory = new ConfigurationFactoryImpl(
-    fileSystem, devonMarshaller, charset, notifications)
+    fileSystem, devonMarshaller, charset)
   lazy val runnerFactory: RunnerFactory = new RunnerFactoryImpl()
   lazy val launcher: Launcher = new LauncherImpl(
     commandLineArguments, configurationFactory, errorHandler, runnerFactory)

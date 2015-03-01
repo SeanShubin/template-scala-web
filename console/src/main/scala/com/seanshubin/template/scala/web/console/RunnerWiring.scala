@@ -29,7 +29,7 @@ trait RunnerWiring {
     "class-loader", classLoaderReceiver, contentByExtension)
   lazy val routes: Seq[Route] = Seq(redirectRoute, classLoaderRoute)
   lazy val dispatcher: Receiver = new DispatchingReceiver(routes)
-  lazy val clock: Clock = new ClockImpl()
+  lazy val clock: Clock = new ClockIntegration()
   lazy val devonMarshaller: DevonMarshaller = new DefaultDevonMarshaller()
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val prefixReceiver: Receiver = PrefixReceiver(configuration.optionalPathPrefix, dispatcher)
