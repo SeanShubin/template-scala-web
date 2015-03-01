@@ -9,21 +9,15 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
   private val lock = new Object()
 
   override def request(request: RequestValue): Unit = {
-    lock.synchronized {
-      wrapLines("request", request.toMultipleLineString).foreach(emit)
-    }
+    syncEmit(wrapLines("request", request.toMultipleLineString))
   }
 
   override def response(request: RequestValue, response: ResponseValue): Unit = {
-    lock.synchronized {
-      wrapLines("response", request.toMultipleLineString ++ response.toMultipleLineString).foreach(emit)
-    }
+    syncEmit(wrapLines("response", request.toMultipleLineString ++ response.toMultipleLineString))
   }
 
   override def exception(runtimeException: RuntimeException): Unit = {
-    lock.synchronized {
-      wrapLines("exception", exceptionLines(runtimeException)).foreach(emit)
-    }
+    syncEmit(wrapLines("exception", exceptionLines(runtimeException)))
   }
 
   override def effectiveConfiguration(configuration: Configuration): Unit = {
@@ -37,7 +31,7 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
     lines.foreach(emit)
   }
 
-  def exceptionLines(ex: Throwable): Seq[String] = {
+  private def exceptionLines(ex: Throwable): Seq[String] = {
     val stringWriter = new StringWriter()
     val printWriter = new PrintWriter(stringWriter)
     ex.printStackTrace(printWriter)
@@ -46,7 +40,7 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
     lines
   }
 
-  def wrapLines(caption: String, lines: Seq[String]): Seq[String] = {
+  private def wrapLines(caption: String, lines: Seq[String]): Seq[String] = {
     val now = clock.zonedDateTimeNow()
     val timeString = now.toString
     val stars = "*" * 30
@@ -56,5 +50,11 @@ class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, 
     val newLines = lines.map(line => "  " + line)
     val wrapped = Seq(header) ++ newLines ++ Seq(footer)
     wrapped
+  }
+
+  private def syncEmit(lines: Seq[String]): Unit = {
+    lock.synchronized {
+      lines.foreach(emit)
+    }
   }
 }
