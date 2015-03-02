@@ -9,13 +9,16 @@ Dependencies
 
 - [http values](https://github.com/SeanShubin/http-values)
 - [web sync](https://github.com/SeanShubin/web-sync)
+- [developers value notation](https://github.com/SeanShubin/developers-value-notation)
 
 Usage assuming port 4000 and javascript overrides at gui/src/main/resources/
 
 - mvn clean install
 - java -jar console/target/scala-web-template.jar 4000 gui/src/main/resources/
 
-To build with dependency analysis
+Design Principles Showcase
+===
 
-- build [dependency analyzer](https://github.com/SeanShubin/dependency-analyzer)
-- mvn clean install -Pdependency
+- [Sean's Coding Style](seans-coding-style.md)
+- [Design by Contract](design-by-contract.md)
+- [Beginning Software Engineering](beginning-software-engineering.md)
