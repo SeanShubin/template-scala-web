@@ -127,7 +127,7 @@ class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
     val configFileName: String = "environment.txt"
     val args = Seq(configFileName)
     val mockFileSystem: FileSystemIntegration = mock[FileSystemIntegration]
-    val devonMarshaller: DevonMarshaller = new DefaultDevonMarshaller
+    val devonMarshaller: DevonMarshaller = DefaultDevonMarshaller
     val charset: Charset = StandardCharsets.UTF_8
     val configurationFactory = new ConfigurationFactoryImpl(mockFileSystem, devonMarshaller, charset)
     val configFilePath = Paths.get(configFileName)

@@ -11,7 +11,7 @@ trait LauncherWiring {
 
   lazy val emitLine: String => Unit = println
   lazy val fileSystem: FileSystemIntegration = new FileSystemIntegrationImpl
-  lazy val devonMarshaller: DevonMarshaller = new DefaultDevonMarshaller
+  lazy val devonMarshaller: DevonMarshaller = DefaultDevonMarshaller
   lazy val charset: Charset = StandardCharsets.UTF_8
   lazy val clock: Clock = new ClockIntegration
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
