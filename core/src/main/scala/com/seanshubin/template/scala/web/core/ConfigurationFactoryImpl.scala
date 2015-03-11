@@ -4,7 +4,7 @@ import java.nio.charset.Charset
 import java.nio.file.Paths
 
 import com.seanshubin.devon.core.devon.DevonMarshaller
-import com.seanshubin.utility.file_system.FileSystemIntegration
+import com.seanshubin.utility.filesystem.FileSystemIntegration
 
 class ConfigurationFactoryImpl(fileSystem: FileSystemIntegration,
                                devonMarshaller: DevonMarshaller,

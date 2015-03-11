@@ -4,7 +4,7 @@ import java.nio.charset.{Charset, StandardCharsets}
 import java.nio.file.Paths
 
 import com.seanshubin.devon.core.devon.{DefaultDevonMarshaller, DevonMarshaller}
-import com.seanshubin.utility.file_system.FileSystemIntegration
+import com.seanshubin.utility.filesystem.FileSystemIntegration
 import org.scalatest.FunSuite
 import org.scalatest.mock.EasyMockSugar
 

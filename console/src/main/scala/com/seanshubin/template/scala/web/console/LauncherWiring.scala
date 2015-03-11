@@ -4,7 +4,7 @@ import java.nio.charset.{Charset, StandardCharsets}
 
 import com.seanshubin.devon.core.devon.{DefaultDevonMarshaller, DevonMarshaller}
 import com.seanshubin.template.scala.web.core._
-import com.seanshubin.utility.file_system.{FileSystemIntegration, FileSystemIntegrationImpl}
+import com.seanshubin.utility.filesystem.{FileSystemIntegration, FileSystemIntegrationImpl}
 
 trait LauncherWiring {
   def commandLineArguments: Seq[String]
