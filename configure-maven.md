@@ -72,7 +72,7 @@ For projects that depend on the "sean" repository
        <repository>
            <id>sean</id>
            <name>sean</name>
-           <url>http://thoughtfulcraftsmanship.com/nexus/content/repositories/sean/</url>
+           <url>http://thoughtfulcraftsmanship.com/nexus/content/repositories/sean-snapshots</url>
            <snapshots>
                <enabled>true</enabled>
            </snapshots>
@@ -103,6 +103,6 @@ For projects that others can depend on
     <distributionManagement>
        <repository>
            <id>sean</id>
-           <url>http://thoughtfulcraftsmanship.com:8081/nexus/content/repositories/sean/</url>
+           <url>http://thoughtfulcraftsmanship.com:8081/nexus/content/repositories/sean-snapshots</url>
        </repository>
     </distributionManagement>
