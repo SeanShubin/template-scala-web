@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.console
 
-import com.seanshubin.devon.core.devon.{DefaultDevonMarshaller, DevonMarshaller}
+import com.seanshubin.devon.core.devon.{DevonMarshaller, DevonMarshallerWiring}
 import com.seanshubin.http.values.core._
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.template.scala.web.server.JettyHttpServer
@@ -30,7 +30,7 @@ trait RunnerWiring {
   lazy val routes: Seq[Route] = Seq(redirectRoute, classLoaderRoute)
   lazy val dispatcher: Receiver = new DispatchingReceiver(routes)
   lazy val clock: Clock = new ClockIntegration()
-  lazy val devonMarshaller: DevonMarshaller = DefaultDevonMarshaller
+  lazy val devonMarshaller: DevonMarshaller = DevonMarshallerWiring.Default
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val prefixReceiver: Receiver = PrefixReceiver(configuration.optionalPathPrefix, dispatcher)
   lazy val receiver: Receiver = new FallbackReceiver(
