@@ -1,146 +1,89 @@
 package com.seanshubin.template.scala.web.core
 
 import java.nio.charset.{Charset, StandardCharsets}
-import java.nio.file.Paths
+import java.nio.file.{Path, Paths}
 
-import com.seanshubin.devon.core.devon.{DevonMarshaller, DevonMarshallerWiring}
-import com.seanshubin.utility.filesystem.FileSystemIntegration
+import com.seanshubin.devon.core.devon.DevonMarshallerWiring
+import com.seanshubin.utility.filesystem.FileSystemIntegrationNotImplemented
 import org.scalatest.FunSuite
-import org.scalatest.mock.EasyMockSugar
 
-class ConfigurationFactoryImplTest extends FunSuite with EasyMockSugar {
+class ConfigurationFactoryImplTest extends FunSuite {
   test("complete configuration") {
-    new Helper {
-      override def content =
-        """{
-          |  port 4000
-          |  servePathOverride gui/src/main/resources/
-          |  optionalPathPrefix /template
-          |}
-          | """.stripMargin
-
-      override def expected = Right(Configuration(4000, Some("gui/src/main/resources/"), Some("/template")))
-
-      override def expecting = () => {
-        mockFileSystem.exists(configFilePath).andReturn(true)
-        mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
-      }
-
-      override def whenExecuting = () => {
-        val actual = configurationFactory.validate(args)
-        assert(actual === expected)
-      }
-    }
+    val content =
+      """{
+        |  port 4000
+        |  servePathOverride gui/src/main/resources/
+        |  optionalPathPrefix /template
+        |}""".stripMargin
+    val expected = Right(Configuration(4000, Some("gui/src/main/resources/"), Some("/template")))
+    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
+    val actual = configurationFactory.validate(Seq("environment.txt"))
+    assert(actual === expected)
   }
 
   test("configuration omit optionals") {
-    new Helper {
-      override def content =
-        """{
-          |  port 5000
-          |}
-          | """.stripMargin
-
-      override def expected = Right(Configuration(5000, None, None))
-
-      override def expecting = () => {
-        mockFileSystem.exists(configFilePath).andReturn(true)
-        mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
-      }
-
-      override def whenExecuting = () => {
-        val actual = configurationFactory.validate(args)
-        assert(actual === expected)
-      }
-    }
+    val content =
+      """{
+        |  port 5000
+        |}""".stripMargin
+    val expected = Right(Configuration(5000, None, None))
+    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
+    val actual = configurationFactory.validate(Seq("environment.txt"))
+    assert(actual === expected)
   }
 
   test("missing configuration file") {
-    new Helper {
-      override def content =
-        """{
-          |  servePathOverride gui/src/main/resources/
-          |  optionalPathPrefix /template
-          |}
-          | """.stripMargin
-
-      override def expected = Left(Seq("Configuration file named 'environment.txt' not found"))
-
-      override def expecting = () => {
-        mockFileSystem.exists(configFilePath).andReturn(false)
-      }
-
-      override def whenExecuting = () => {
-        val actual = configurationFactory.validate(args)
-        assert(actual === expected)
-      }
-    }
+    val content =
+      """{
+        |  servePathOverride gui/src/main/resources/
+        |  optionalPathPrefix /template
+        |}""".stripMargin
+    val expected = Left(Seq("Configuration file named 'environment.txt' not found"))
+    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = false)
+    val actual = configurationFactory.validate(Seq("environment.txt"))
+    assert(actual === expected)
   }
 
   test("missing required field") {
-    new Helper {
-      override def content =
-        """{
-          |  servePathOverride gui/src/main/resources/
-          |  optionalPathPrefix /template
-          |}
-          | """.stripMargin
-
-      override def expected = Left(Seq(
-        "There was a problem reading the configuration file 'environment.txt': Missing value for port of type Int"))
-
-      override def expecting = () => {
-        mockFileSystem.exists(configFilePath).andReturn(true)
-        mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
-      }
-
-      override def whenExecuting = () => {
-        val actual = configurationFactory.validate(args)
-        assert(actual === expected)
-      }
-    }
+    val content =
+      """{
+        |  servePathOverride gui/src/main/resources/
+        |  optionalPathPrefix /template
+        |}""".stripMargin
+    val expected = Left(Seq(
+      "There was a problem reading the configuration file 'environment.txt': Missing value for port of type Int"))
+    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
+    val actual = configurationFactory.validate(Seq("environment.txt"))
+    assert(actual === expected)
   }
 
   test("malformed configuration") {
-    new Helper {
-      override def content = "{"
-
-      override def expected = Left(Seq("There was a problem reading the configuration file 'environment.txt': Could not match 'element', expected one of: map, array, string, null"))
-
-      override def expecting = () => {
-        mockFileSystem.exists(configFilePath).andReturn(true)
-        mockFileSystem.readAllBytes(configFilePath).andReturn(contentBytes)
-      }
-
-      override def whenExecuting = () => {
-        val actual = configurationFactory.validate(args)
-        assert(actual === expected)
-      }
-    }
+    val content = "{"
+    val expected = Left(Seq("There was a problem reading the configuration file 'environment.txt': Could not match 'element', expected one of: map, array, string, null"))
+    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
+    val actual = configurationFactory.validate(Seq("environment.txt"))
+    assert(actual === expected)
   }
 
-  trait Helper {
-    def content: String
-
-    def expected: Either[Seq[String], Configuration]
-
-    val configFileName: String = "environment.txt"
-    val args = Seq(configFileName)
-    val mockFileSystem: FileSystemIntegration = mock[FileSystemIntegration]
-    val devonMarshaller: DevonMarshaller = DevonMarshallerWiring.Default
-    val charset: Charset = StandardCharsets.UTF_8
-    val configurationFactory = new ConfigurationFactoryImpl(mockFileSystem, devonMarshaller, charset)
+  def createConfigurationFactory(configFileName: String, content: String, exists: Boolean): ConfigurationFactory = {
     val configFilePath = Paths.get(configFileName)
-    val contentBytes = content.getBytes(charset)
-    val mocks = Array(mockFileSystem)
+    val devonMarshaller = DevonMarshallerWiring.Default
+    val fileSystem = new FakeFileSystem(configFilePath = configFilePath, content = content, exists = exists)
+    val configurationFactory = new ConfigurationFactoryImpl(fileSystem, devonMarshaller, charset)
+    configurationFactory
+  }
 
-    def expecting: () => Unit
+  val charset: Charset = StandardCharsets.UTF_8
 
-    def whenExecuting: () => Unit
+  class FakeFileSystem(configFilePath: Path, content: String, exists: Boolean) extends FileSystemIntegrationNotImplemented {
+    override def exists(path: Path): Boolean = {
+      assert(path === configFilePath)
+      exists
+    }
 
-    expecting()
-    EasyMockSugar.whenExecuting(mockFileSystem) {
-      whenExecuting()
+    override def readAllBytes(path: Path): Seq[Byte] = {
+      assert(path === configFilePath)
+      content.getBytes(charset)
     }
   }
 

@@ -5,9 +5,10 @@ import org.scalatest.FunSuite
 class ClockIntegrationTest extends FunSuite {
   test("time moves forward") {
     val clock = new ClockIntegration
-    val now = clock.zonedDateTimeNow
+    val earlier = clock.zonedDateTimeNow
+    Thread.sleep(1)
     val later = clock.zonedDateTimeNow
-    assert(!now.isAfter(later))
-    assert(later.isAfter(now))
+    assert(!earlier.isAfter(later))
+    assert(later.isAfter(earlier))
   }
 }

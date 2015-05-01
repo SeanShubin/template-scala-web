@@ -1,18 +1,31 @@
 package com.seanshubin.template.scala.web.core
 
 import org.scalatest.FunSuite
-import org.scalatest.mock.EasyMockSugar
 
-class RunnerImplTest extends FunSuite with EasyMockSugar {
-  test("start server") {
-    val server = mock[HttpServer]
-    val runner = new RunnerImpl(server)
-    expecting {
-      server.start()
-      server.join()
-    }
-    whenExecuting(server) {
-      runner.run()
-    }
+import scala.collection.mutable.ArrayBuffer
+
+class RunnerImplTest extends FunSuite {
+  test("don't start server upon construction") {
+    val server = new FakeHttpServer()
+    new RunnerImpl(server)
+    assert(server.sideEffects === Seq())
   }
+
+  test("start server when run called") {
+    val server = new FakeHttpServer()
+    val runner = new RunnerImpl(server)
+    runner.run()
+    assert(server.sideEffects === Seq("start", "join"))
+  }
+
+  class FakeHttpServer extends HttpServer {
+    val sideEffects: ArrayBuffer[String] = new ArrayBuffer()
+
+    override def start(): Unit = sideEffects.append("start")
+
+    override def stop(): Unit = sideEffects.append("stop")
+
+    override def join(): Unit = sideEffects.append("join")
+  }
+
 }
