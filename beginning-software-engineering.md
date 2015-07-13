@@ -70,7 +70,7 @@ Sometimes the implementers were solving a different problem, or sometimes they w
 We humans tend to see what we expect to see.
 Try to decide what would be evidence for and against your guess before you check the facts.
 A useful guideline is to make sure your level of certainty is proportional to the level of evidence as interpreted by reason.
-Curiosity is essential, without it you have no reason to dig for underlying reasons.
+Curiosity is essential, without it you have no way to gain understanding sufficient to question your assumptions.
 
 ## Simplicity (in priority order)
 
