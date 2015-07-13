@@ -62,12 +62,13 @@ Developers you cannot learn from
 
 One common bad habit is to assume we aren't smart enough to solve a problem, so we copy & paste code we don't understand, or use a framework/library we don't understand, figuring the implementers must have known what they were doing.
 Sometimes the implementers were solving a different problem, or sometimes they were wrong, so what this habit does is cause bad code to replicate throughout the code base.
-It is ok not rely on untested and unproven technologies in production, but to rely on code you don't even understand is even worse.
 
 ### Confirmation Bias
 
 We humans tend to see what we expect to see.
 Try to decide what would be evidence for and against your guess before you check the facts.
+A useful guideline is to make sure your level of certainty is proportional to the level of evidence as interpreted by reason.
+Curiosity is essential, without it you have no reason to dig for underlying reasons.
 
 ## Simplicity (in priority order)
 
