@@ -15,7 +15,7 @@ class ConfigurationFactoryImplTest extends FunSuite {
         |  servePathOverride gui/src/main/resources/
         |  optionalPathPrefix /template
         |}""".stripMargin
-    val expected = Right(Configuration(4000, Some("gui/src/main/resources/"), Some("/template")))
+    val expected = Right(Configuration.Sample)
     val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
     val actual = configurationFactory.validate(Seq("environment.txt"))
     assert(actual === expected)

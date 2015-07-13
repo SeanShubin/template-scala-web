@@ -7,10 +7,10 @@ import scala.collection.mutable.ArrayBuffer
 
 class LauncherImplTest extends FunSuite {
   test("valid configuration") {
-    val helper = new Helper(validationResult = Right(Configuration(4000, None, None)))
+    val helper = new Helper(validationResult = Right(Configuration.Sample))
     helper.launcher.launch()
     assert(helper.sideEffects.size === 2)
-    assert(helper.sideEffects(0) ===("notifications.effectiveConfiguration", Configuration(4000, None, None)))
+    assert(helper.sideEffects(0) ===("notifications.effectiveConfiguration", Configuration.Sample))
     assert(helper.sideEffects(1) ===("runner.run", ()))
   }
 

@@ -9,12 +9,6 @@ import com.seanshubin.utility.filesystem.FileSystemIntegration
 class ConfigurationFactoryImpl(fileSystem: FileSystemIntegration,
                                devonMarshaller: DevonMarshaller,
                                charset: Charset) extends ConfigurationFactory {
-  val sampleConfiguration: Configuration = Configuration(
-    port = 4000,
-    servePathOverride = Some("gui/src/main/resources/"),
-    optionalPathPrefix = Some("/template")
-  )
-
   override def validate(args: Seq[String]): Either[Seq[String], Configuration] = {
     if (args.length == 1) {
       val configFilePath = Paths.get(args(0))
@@ -33,7 +27,7 @@ class ConfigurationFactoryImpl(fileSystem: FileSystemIntegration,
           Left(Seq(s"There was a problem reading the configuration file '$configFilePath': ${ex.getMessage}"))
       }
     } else {
-      val sampleConfigDevon = devonMarshaller.fromValue(sampleConfiguration)
+      val sampleConfigDevon = devonMarshaller.fromValue(Configuration.Sample)
       val prettySampleLines = devonMarshaller.toPretty(sampleConfigDevon)
       Left(Seq(
         "Expected exactly one argument, the name of the configuration file",
