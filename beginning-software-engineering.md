@@ -29,6 +29,8 @@ Don’t assume the experts know better.
 
 Critical thinking is a skill that requires discipline and training over a lifetime.
 It is not natural and has very little to do with how smart you are.
+Accurate factual information and the intelligence to understand it are necessary but not sufficient conditions for good decisions.
+Disciplined critical thinking is required to bring them together.
 
 ### Before creating a solution, understand what it means to be a problem
 
