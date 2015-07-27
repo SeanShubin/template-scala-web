@@ -15,6 +15,7 @@ Usage assuming port 4000 and javascript overrides at gui/src/main/resources/
 
 - mvn clean install
 - java -jar console/target/scala-web-template.jar 4000 gui/src/main/resources/
+- navigate browser to http://localhost:4000/template/index.html
 
 Design Principles Showcase
 ===
