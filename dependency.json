@@ -7,14 +7,20 @@
     ]
   ],
   "scrubGroupingPattern": "com/seanshubin/([^/]+).*",
-  "styleSheet": ["dependency.css"],
+  "styleSheet": [
+    "dependency.css"
+  ],
   "relevantDependencyPattern": {
-    "includeRegex": ["com/seanshubin/template/scala/web/.*"],
+    "includeRegex": [
+      "com/seanshubin/template/scala/web/.*"
+    ],
     "excludeRegex": []
   },
   "trimRegex": "^com/seanshubin/template/scala/web/",
   "classFileNamePattern": {
-    "includeRegex": [".*\\.class"],
+    "includeRegex": [
+      ".*\\.class"
+    ],
     "excludeRegex": []
   },
   "zipFileNamePattern": {
