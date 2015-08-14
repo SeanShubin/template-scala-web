@@ -4,7 +4,7 @@ import com.seanshubin.template.scala.web.core.{Configuration, Runner, RunnerFact
 
 class RunnerFactoryImpl extends RunnerFactory {
   override def createRunner(theConfiguration: Configuration): Runner = {
-    new RunnerWiring {
+    new RuntimeLifecycleWiring {
       override def configuration: Configuration = theConfiguration
     }.runner
   }

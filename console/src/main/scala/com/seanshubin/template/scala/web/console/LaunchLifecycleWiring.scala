@@ -6,7 +6,7 @@ import com.seanshubin.devon.core.devon.{DevonMarshaller, DevonMarshallerWiring}
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.utility.filesystem.{FileSystemIntegration, FileSystemIntegrationImpl}
 
-trait LauncherWiring {
+trait LaunchLifecycleWiring {
   def commandLineArguments: Seq[String]
 
   lazy val emitLine: String => Unit = println

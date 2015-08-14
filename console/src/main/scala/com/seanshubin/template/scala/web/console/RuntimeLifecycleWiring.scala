@@ -5,7 +5,7 @@ import com.seanshubin.http.values.core._
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.template.scala.web.server.JettyHttpServer
 
-trait RunnerWiring {
+trait RuntimeLifecycleWiring {
   def configuration: Configuration
 
   lazy val emitLine: String => Unit = println
