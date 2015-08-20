@@ -17,7 +17,7 @@ trait LaunchLifecycleWiring {
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val configurationFactory: ConfigurationFactory = new ConfigurationFactoryImpl(
     fileSystem, devonMarshaller, charset)
-  lazy val runnerFactory: RunnerFactory = new RunnerFactoryImpl()
+  lazy val runnerFactory: Configuration => Runner = RuntimeLifecycleWiring.createRunnerFromConfiguration
   lazy val launcher: Launcher = new LauncherImpl(
     commandLineArguments, configurationFactory, runnerFactory, notifications)
 }

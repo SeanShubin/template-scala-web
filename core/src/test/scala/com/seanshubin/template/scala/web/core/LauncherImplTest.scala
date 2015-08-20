@@ -25,7 +25,7 @@ class LauncherImplTest extends FunSuite {
     val sideEffects: ArrayBuffer[(String, Any)] = new ArrayBuffer()
     val configurationFactory = new FakeConfigurationFactory(Seq("foo.txt"), validationResult)
     val runner = new FakeRunner(sideEffects)
-    val runnerFactory = new FakeRunnerFactory(runner)
+    val runnerFactory = (configuration: Configuration) => runner
     val notifications = new FakeNotification(sideEffects)
     val launcher = new LauncherImpl(Seq("foo.txt"), configurationFactory, runnerFactory, notifications)
   }
@@ -55,10 +55,6 @@ class LauncherImplTest extends FunSuite {
 
   class FakeRunner(sideEffects: ArrayBuffer[(String, Any)]) extends Runner {
     override def run(): Unit = sideEffects.append(("runner.run", ()))
-  }
-
-  class FakeRunnerFactory(runner: Runner) extends RunnerFactory {
-    override def createRunner(configuration: Configuration): Runner = runner
   }
 
 }

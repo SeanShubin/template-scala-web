@@ -38,3 +38,11 @@ trait RuntimeLifecycleWiring {
   lazy val server: HttpServer = new JettyHttpServer(configuration.port, receiver)
   lazy val runner: Runner = new RunnerImpl(server)
 }
+
+object RuntimeLifecycleWiring {
+  def createRunnerFromConfiguration(theConfiguration: Configuration): Runner = {
+    new RuntimeLifecycleWiring {
+      override def configuration: Configuration = theConfiguration
+    }.runner
+  }
+}
