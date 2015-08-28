@@ -17,7 +17,7 @@
             <artifactId>devon-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.seanshubin</groupId>
+            <groupId>com.seanshubin.utility</groupId>
             <artifactId>utility-filesystem</artifactId>
         </dependency>
         <dependency>
