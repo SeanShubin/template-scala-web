@@ -1,22 +1,24 @@
-Sean's Coding Style
-===
+# Sean's Coding Style
 
-- Think about what you are doing
+### High level summary
+- Compilation units should be organized in terms of responsibility
+- No more than one responsibility per compilation unit
+- Knowledge of other responsibilities should be behind a contract
+
+### Think about what you are doing
 - Use [Critical Thinking](https://github.com/SeanShubin/seans-coding-style/blob/master/beginning-software-engineering.md)
 - When problem solving, think of a problem as a
     - "discrepancy between things as desired and things as perceived"
     - from [Are Your Lights On?](http://www.geraldmweinberg.com/Site/AYLO.html)
 
-Simplicity (more important listed earlier)
-
+### Simplicity (more important listed earlier)
 - Meet Customer Need
 - Easy To Maintain
 - Clearly Express Intent
 - No Duplicate Code
 - Concise As Possible
 
-Early Feedback (better listed earlier)
-
+### Early Feedback (better listed earlier)
 - Instant
 - Compile
 - Unit Test
@@ -25,42 +27,35 @@ Early Feedback (better listed earlier)
 - Deployment Manual Test
 - Customer Feedback
 
-Avoid automatic setup/teardown
-
+### Avoid automatic setup/teardown
 - This makes it harder to look at the code and tell what it is doing
 - For simple cases, explicitly invoke the setup and teardown functions
 - For more complex cases, use a template method
     - The invocation of a template method makes it explicitly clear that there is some setup and/or teardown going on
 
-Configuraiton
-
+### Configuraiton
 - environment specific constants belong in a configuration file
 - constants independent of environment belong in code
 
-No checked exceptions
-
+### No checked exceptions
 - If the exception occurs at runtime, it should extend RuntimeException
 - Create utility functions to catch checked exceptions and re-throw unchecked exceptions
 - This hides exception handling details from the rest of the logic
 
-Avoid custom exceptions
-
+### Avoid custom exceptions
 - The only reason to have a custom exception is if it is expected and you actually need to handle it differently
 - If the exception is expected, handle it by the earliest code up the call stack that knows what to do with it, do not let it propagate to the top level
 - If the exception is unexpected, let it propagate to the top level exception handler
 
-Store multiline text as separate lines
-
+### Store multiline text as separate lines
 - Don't insert newlines until it matters
 - This pushes knowledge of platform specific newline separators away from your logic
 
-No Magic
-
+### No Magic
 - You should be able to tell what code is doing by looking at it
 - "Self documenting code" rather than "convention over configuration"
 
-Things that make code easy to maintain
-
+### Things that make code easy to maintain
 - breakpoints
     - enables interactive debugging
 - stack trace
@@ -74,8 +69,7 @@ Things that make code easy to maintain
     - quick feedback for static typing errors
     - pre-computes behavior before launching
 
-Things that sabotage the above list
-
+### Things that sabotage the above list
 - specifying application behavior in a config file
     - can't set breakpoints
     - harder to unit test
@@ -94,8 +88,7 @@ Things that sabotage the above list
     - depending on the level of magic involved makes the stack trace hard to follow
     - annotations are ok if they are talking to the compiler rather than altering application behaviour, such as the scala @tailrec annotation
 
-Coupling & Cohesion
-
+### Coupling & Cohesion
 - The practice of valuing low coupling and high cohesion has been known since Larry Constantine articulated it in the late 1960s as part of Structured Design
     - No amount of smart people or popular frameworks has since changed this, so ignore pressures to do otherwise
     - In particular, claims of "cross cutting concerns" are a nonsensical excuse to violate these coupling and cohesion principles
@@ -105,8 +98,8 @@ Coupling & Cohesion
     - For logging, record important events in a sensible manner as a first class concern rather than an afterthought, just like any other feature of your application
 - Each compilation unit (in Java, a class), should have only one role, and the roles should not overlap
 - In particular, don't mix integration concerns with logic
-- Some sample roles
 
+### Some sample roles
 - Contract
     - Keeps your dependency structure loosely coupled
     - Expresses capabilities without regard to implementation
@@ -196,8 +189,7 @@ Coupling & Cohesion
         - these should be injected via the parameter list rather than stored as state
         - it is a judgement call whether to move the contract dependency to a service rather than a domain object
 
-Common usage patterns for these roles
-
+### Common usage patterns for these roles
 - The application is launched from the command line.
 - The Entry Point forwards along the command line arguments to the wiring, then invokes the main launcher from the wiring.
 - An http request arrives, the top level dispatcher service examines the request and delegates to the appropriate http integration.
