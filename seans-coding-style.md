@@ -188,9 +188,13 @@ Coupling & Cohesion
     - No observable mutable state
     - Observable immutable state is ok
     - Feedback provided by unit tests when logic is involved
-    - Can generate Value Objects
-    - Can depend on Value Object, Pure Function Library
+    - May generate Value Objects
+    - May depend on Value Object, Pure Function Library
     - May not depend on Data Transfer Object
+        - Dependency should flow in the other direction
+    - May depend on contracts
+        - these should be injected via the parameter list rather than stored as state
+        - it is a judgement call whether to move the contract dependency to a service rather than a domain object
 
 Common usage patterns for these roles
 
