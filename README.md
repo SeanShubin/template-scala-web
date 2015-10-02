@@ -20,6 +20,6 @@ Usage assuming port 4000 and javascript overrides at gui/src/main/resources/
 Design Principles Showcase
 ===
 
-- [Sean's Coding Style](https://github.com/SeanShubin/guidelines/seans-coding-style.md)
-- [Design by Contract](https://github.com/SeanShubin/guidelines/design-by-contract.md)
-- [Beginning Software Engineering](https://github.com/SeanShubin/guidelines/beginning-software-engineering.md)
+- [Sean's Coding Style](https://github.com/SeanShubin/documentation/blob/master/guidelines/seans-coding-style.md)
+- [Design by Contract](https://github.com/SeanShubin/documentation/blob/master/guidelines/design-by-contract.md)
+- [Beginning Software Engineering](https://github.com/SeanShubin/documentation/blob/master/guidelines/beginning-software-engineering.md)
