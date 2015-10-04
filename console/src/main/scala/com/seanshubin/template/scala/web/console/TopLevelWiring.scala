@@ -19,7 +19,7 @@ trait TopLevelWiring {
     fileSystem, devonMarshaller, charset)
   lazy val runnerFactory: Configuration => AfterConfigurationRunner = (theConfiguration ) => new AfterConfigurationWiring {
     override def configuration: Configuration = theConfiguration
-  }.runner
+  }.afterConfigurationRunner
   lazy val topLevelRunner: TopLevelRunner = new TopLevelRunnerImpl(
     commandLineArguments, configurationFactory, runnerFactory, notifications)
 }
