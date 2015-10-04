@@ -6,7 +6,7 @@ import com.seanshubin.devon.core.devon.{DevonMarshaller, DevonMarshallerWiring}
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.utility.filesystem.{FileSystemIntegration, FileSystemIntegrationImpl}
 
-trait LaunchLifecycleWiring {
+trait TopLevelWiring {
   def commandLineArguments: Seq[String]
 
   lazy val emitLine: String => Unit = println
@@ -17,7 +17,9 @@ trait LaunchLifecycleWiring {
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val configurationFactory: ConfigurationFactory = new ConfigurationFactoryImpl(
     fileSystem, devonMarshaller, charset)
-  lazy val runnerFactory: Configuration => Runner = RuntimeLifecycleWiring.createRunnerFromConfiguration
-  lazy val launcher: Launcher = new LauncherImpl(
+  lazy val runnerFactory: Configuration => AfterConfigurationRunner = (theConfiguration ) => new AfterConfigurationWiring {
+    override def configuration: Configuration = theConfiguration
+  }.runner
+  lazy val topLevelRunner: TopLevelRunner = new TopLevelRunnerImpl(
     commandLineArguments, configurationFactory, runnerFactory, notifications)
 }

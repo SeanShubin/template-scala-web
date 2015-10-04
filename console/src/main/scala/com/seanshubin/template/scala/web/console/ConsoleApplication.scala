@@ -1,7 +1,7 @@
 package com.seanshubin.template.scala.web.console
 
-object ConsoleApplication extends App with LaunchLifecycleWiring {
-  override def commandLineArguments: Seq[String] = args
-
-  launcher.launch()
+object ConsoleApplication extends App {
+  new TopLevelWiring {
+    override def commandLineArguments: Seq[String] = args
+  }.topLevelRunner.apply()
 }

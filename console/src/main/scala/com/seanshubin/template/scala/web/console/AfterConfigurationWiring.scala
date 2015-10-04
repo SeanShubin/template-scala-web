@@ -5,7 +5,7 @@ import com.seanshubin.http.values.core._
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.template.scala.web.server.JettyHttpServer
 
-trait RuntimeLifecycleWiring {
+trait AfterConfigurationWiring {
   def configuration: Configuration
 
   lazy val emitLine: String => Unit = println
@@ -36,13 +36,5 @@ trait RuntimeLifecycleWiring {
   lazy val receiver: Receiver = new FallbackReceiver(
     prefixReceiver, echoReceiver, notifications.request, notifications.response, notifications.exception)
   lazy val server: HttpServer = new JettyHttpServer(configuration.port, receiver)
-  lazy val runner: Runner = new RunnerImpl(server)
-}
-
-object RuntimeLifecycleWiring {
-  def createRunnerFromConfiguration(theConfiguration: Configuration): Runner = {
-    new RuntimeLifecycleWiring {
-      override def configuration: Configuration = theConfiguration
-    }.runner
-  }
+  lazy val runner: AfterConfigurationRunner = new AfterConfigurationRunnerImpl(server)
 }

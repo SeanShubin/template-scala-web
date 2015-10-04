@@ -4,17 +4,17 @@ import org.scalatest.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
-class RunnerImplTest extends FunSuite {
+class AfterConfigurationRunnerImplTest extends FunSuite {
   test("don't start server upon construction") {
     val server = new FakeHttpServer()
-    new RunnerImpl(server)
+    new AfterConfigurationRunnerImpl(server)
     assert(server.sideEffects === Seq())
   }
 
   test("start server when run called") {
     val server = new FakeHttpServer()
-    val runner = new RunnerImpl(server)
-    runner.run()
+    val runner = new AfterConfigurationRunnerImpl(server)
+    runner.apply()
     assert(server.sideEffects === Seq("start", "join"))
   }
 
