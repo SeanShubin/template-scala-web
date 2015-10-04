@@ -17,9 +17,9 @@ trait TopLevelWiring {
   lazy val notifications: Notifications = new LineEmittingNotifications(clock, devonMarshaller, emitLine)
   lazy val configurationFactory: ConfigurationFactory = new ConfigurationFactoryImpl(
     fileSystem, devonMarshaller, charset)
-  lazy val runnerFactory: Configuration => AfterConfigurationRunner = (theConfiguration ) => new AfterConfigurationWiring {
+  lazy val createAfterConfigurationRunner: Configuration => AfterConfigurationRunner = (theConfiguration) => new AfterConfigurationWiring {
     override def configuration: Configuration = theConfiguration
   }.afterConfigurationRunner
   lazy val topLevelRunner: TopLevelRunner = new TopLevelRunnerImpl(
-    commandLineArguments, configurationFactory, runnerFactory, notifications)
+    commandLineArguments, configurationFactory, createAfterConfigurationRunner, notifications)
 }

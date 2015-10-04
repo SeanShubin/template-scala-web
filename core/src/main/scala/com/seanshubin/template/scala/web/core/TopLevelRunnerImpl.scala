@@ -1,9 +1,9 @@
 package com.seanshubin.template.scala.web.core
 
 class TopLevelRunnerImpl(args: Seq[String],
-                   configurationFactory: ConfigurationFactory,
-                   createRunner: Configuration => AfterConfigurationRunner,
-                   notifications: Notifications) extends TopLevelRunner {
+                         configurationFactory: ConfigurationFactory,
+                         createRunner: Configuration => AfterConfigurationRunner,
+                         notifications: Notifications) extends TopLevelRunner {
   override def apply(): Unit = {
     val errorOrConfiguration = configurationFactory.validate(args)
     errorOrConfiguration match {
