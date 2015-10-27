@@ -36,5 +36,5 @@ trait AfterConfigurationWiring {
   lazy val receiver: Receiver = new FallbackReceiver(
     prefixReceiver, echoReceiver, notifications.request, notifications.response, notifications.exception)
   lazy val server: HttpServer = new JettyHttpServer(configuration.port, receiver)
-  lazy val afterConfigurationRunner: AfterConfigurationRunner = new AfterConfigurationRunnerImpl(server)
+  lazy val afterConfigurationRunner: Runnable = new AfterConfigurationRunnerImpl(server)
 }

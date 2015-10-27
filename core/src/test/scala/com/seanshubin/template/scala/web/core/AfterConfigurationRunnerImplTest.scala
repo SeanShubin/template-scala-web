@@ -14,7 +14,7 @@ class AfterConfigurationRunnerImplTest extends FunSuite {
   test("start server when run called") {
     val server = new FakeHttpServer()
     val runner = new AfterConfigurationRunnerImpl(server)
-    runner.apply()
+    runner.run()
     assert(server.sideEffects === Seq("start", "join"))
   }
 

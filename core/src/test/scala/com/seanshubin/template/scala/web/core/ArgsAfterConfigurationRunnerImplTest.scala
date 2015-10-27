@@ -8,7 +8,7 @@ import scala.collection.mutable.ArrayBuffer
 class ArgsAfterConfigurationRunnerImplTest extends FunSuite {
   test("valid configuration") {
     val helper = new Helper(validationResult = Right(Configuration.Sample))
-    helper.launcher.apply()
+    helper.launcher.run()
     assert(helper.sideEffects.size === 2)
     assert(helper.sideEffects(0) ===("notifications.effectiveConfiguration", Configuration.Sample))
     assert(helper.sideEffects(1) ===("runner.run", ()))
@@ -16,7 +16,7 @@ class ArgsAfterConfigurationRunnerImplTest extends FunSuite {
 
   test("invalid configuration") {
     val helper = new Helper(validationResult = Left(Seq("error")))
-    helper.launcher.apply()
+    helper.launcher.run()
     assert(helper.sideEffects.size === 1)
     assert(helper.sideEffects(0) ===("notifications.configurationError", Seq("error")))
   }
@@ -53,8 +53,8 @@ class ArgsAfterConfigurationRunnerImplTest extends FunSuite {
     override def exception(runtimeException: RuntimeException): Unit = append("runtimeException", runtimeException)
   }
 
-  class FakeAfterConfigurationRunner(sideEffects: ArrayBuffer[(String, Any)]) extends AfterConfigurationRunner {
-    override def apply(): Unit = sideEffects.append(("runner.run", ()))
+  class FakeAfterConfigurationRunner(sideEffects: ArrayBuffer[(String, Any)]) extends Runnable {
+    override def run(): Unit = sideEffects.append(("runner.run", ()))
   }
 
 }
