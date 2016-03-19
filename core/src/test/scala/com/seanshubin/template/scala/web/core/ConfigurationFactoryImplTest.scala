@@ -12,7 +12,7 @@ class ConfigurationFactoryImplTest extends FunSuite {
     val content =
       """{
         |  port 4000
-        |  servePathOverride gui/src/main/resources/
+        |  optionalServePathOverride gui/src/main/resources/
         |  optionalPathPrefix /template
         |}""".stripMargin
     val expected = Right(Configuration.Sample)
@@ -35,24 +35,11 @@ class ConfigurationFactoryImplTest extends FunSuite {
   test("missing configuration file") {
     val content =
       """{
-        |  servePathOverride gui/src/main/resources/
+        |  optionalServePathOverride gui/src/main/resources/
         |  optionalPathPrefix /template
         |}""".stripMargin
     val expected = Left(Seq("Configuration file named 'environment.txt' not found"))
     val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = false)
-    val actual = configurationFactory.validate(Seq("environment.txt"))
-    assert(actual === expected)
-  }
-
-  test("missing required field") {
-    val content =
-      """{
-        |  servePathOverride gui/src/main/resources/
-        |  optionalPathPrefix /template
-        |}""".stripMargin
-    val expected = Left(Seq(
-      "There was a problem reading the configuration file 'environment.txt': Missing value for port of type Int"))
-    val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
     val actual = configurationFactory.validate(Seq("environment.txt"))
     assert(actual === expected)
   }
