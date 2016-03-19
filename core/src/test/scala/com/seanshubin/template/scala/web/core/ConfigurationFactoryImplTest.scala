@@ -26,7 +26,7 @@ class ConfigurationFactoryImplTest extends FunSuite {
       """{
         |  port 5000
         |}""".stripMargin
-    val expected = Right(Configuration(5000, None, None))
+    val expected = Right(Configuration(Some(5000), None, None))
     val configurationFactory = createConfigurationFactory(configFileName = "environment.txt", content = content, exists = true)
     val actual = configurationFactory.validate(Seq("environment.txt"))
     assert(actual === expected)

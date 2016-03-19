@@ -1,5 +1,5 @@
 {
   port 4000
-  servePathOverride gui/src/main/resources/
+  optionalServePathOverride gui/src/main/resources/
   optionalPathPrefix /template
 }

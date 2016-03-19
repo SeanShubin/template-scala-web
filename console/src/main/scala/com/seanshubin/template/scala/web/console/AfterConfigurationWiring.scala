@@ -18,11 +18,11 @@ trait AfterConfigurationWiring {
     ".html" -> ContentType("text/html", Some(charset)),
     ".ico" -> ContentType("image/x-icon", None)
   )
-  lazy val redirectFunction: String => Option[String] = uri => redirects.get(uri)
+  lazy val redirectFunction: String => Option[String] = redirects.get
   lazy val redirectReceiver: Receiver = new RedirectReceiver(redirectFunction)
   lazy val classLoader: ClassLoader = this.getClass.getClassLoader
   lazy val classLoaderReceiver: Receiver = new ClassLoaderReceiver(
-    classLoader, classLoaderPrefix, contentByExtension, configuration.servePathOverride)
+    classLoader, classLoaderPrefix, contentByExtension, configuration.optionalServePathOverride)
   lazy val echoReceiver: Receiver = new EchoReceiver()
   lazy val redirectRoute: Route = new RedirectRoute("redirect", redirectReceiver, redirectFunction)
   lazy val classLoaderRoute: Route = new ClassLoaderRoute(
@@ -35,6 +35,6 @@ trait AfterConfigurationWiring {
   lazy val prefixReceiver: Receiver = PrefixReceiver(configuration.optionalPathPrefix, dispatcher)
   lazy val receiver: Receiver = new FallbackReceiver(
     prefixReceiver, echoReceiver, notifications.request, notifications.response, notifications.exception)
-  lazy val server: HttpServer = new JettyHttpServer(configuration.port, receiver)
+  lazy val server: HttpServer = new JettyHttpServer(configuration.port.get, receiver)
   lazy val afterConfigurationRunner: Runnable = new AfterConfigurationRunnerImpl(server)
 }
