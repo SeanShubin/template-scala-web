@@ -1,0 +1,17 @@
+{
+  reportDir generated/detangled
+  searchPaths
+  [
+    console/target/template-scala-web.jar
+  ]
+  level 2
+  startsWith
+  {
+    include [[com seanshubin template scala web]]
+    exclude []
+    drop [[com seanshubin template scala web]]
+  }
+  ignoreFiles []
+  canFailBuild true
+  allowedInCycle []
+}
