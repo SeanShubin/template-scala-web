@@ -1,7 +1,6 @@
 package com.seanshubin.template.scala.web.console
 
-import com.seanshubin.devon.domain.DevonMarshallerWiring
-import com.seanshubin.devon.parserules.DevonMarshaller
+import com.seanshubin.devon.domain.{DevonMarshaller, DevonMarshallerWiring}
 import com.seanshubin.http.values.core._
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.template.scala.web.server.JettyHttpServer
