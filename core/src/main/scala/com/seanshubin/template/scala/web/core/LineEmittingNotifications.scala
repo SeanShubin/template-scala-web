@@ -2,7 +2,7 @@ package com.seanshubin.template.scala.web.core
 
 import java.io.{PrintWriter, StringWriter}
 
-import com.seanshubin.devon.core.devon.DevonMarshaller
+import com.seanshubin.devon.parserules.DevonMarshaller
 import com.seanshubin.http.values.core.{RequestValue, ResponseValue}
 
 class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, emit: String => Unit) extends Notifications {

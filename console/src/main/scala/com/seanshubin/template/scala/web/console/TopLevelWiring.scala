@@ -2,7 +2,8 @@ package com.seanshubin.template.scala.web.console
 
 import java.nio.charset.{Charset, StandardCharsets}
 
-import com.seanshubin.devon.core.devon.{DevonMarshaller, DevonMarshallerWiring}
+import com.seanshubin.devon.domain.DevonMarshallerWiring
+import com.seanshubin.devon.parserules.DevonMarshaller
 import com.seanshubin.template.scala.web.core._
 import com.seanshubin.utility.filesystem.{FileSystemIntegration, FileSystemIntegrationImpl}
 
