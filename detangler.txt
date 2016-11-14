@@ -1,5 +1,5 @@
 {
-  reportDir generated/detangled
+  reportDir target/detangler
   searchPaths
   [
     console/target/template-scala-web.jar
