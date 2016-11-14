@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>com.seanshubin</groupId>
-            <artifactId>template-scala-web-core</artifactId>
+            <artifactId>template-scala-web-domain</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

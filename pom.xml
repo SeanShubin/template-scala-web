@@ -55,7 +55,7 @@
         </dependencies>
     </dependencyManagement>
     <modules>
-        <module>core</module>
+        <module>domain</module>
         <module>gui</module>
         <module>server</module>
         <module>console</module>
@@ -88,6 +88,7 @@
                     <args>
                         <arg>-unchecked</arg>
                         <arg>-deprecation</arg>
+                        <arg>-feature</arg>
                     </args>
                 </configuration>
             </plugin>
