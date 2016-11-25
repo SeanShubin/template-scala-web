@@ -3,7 +3,7 @@ package com.seanshubin.template.scala.web.domain
 import java.io.{PrintWriter, StringWriter}
 
 import com.seanshubin.devon.domain.DevonMarshaller
-import com.seanshubin.http.values.core.{RequestValue, ResponseValue}
+import com.seanshubin.http.values.domain.{RequestValue, ResponseValue}
 
 class LineEmittingNotifications(clock: Clock, devonMarshaller: DevonMarshaller, emit: String => Unit) extends Notifications {
   private val lock = new Object()

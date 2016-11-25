@@ -1,6 +1,6 @@
 package com.seanshubin.template.scala.web.server
 
-import com.seanshubin.http.values.core.Receiver
+import com.seanshubin.http.values.domain.Receiver
 import com.seanshubin.http.values.server.jetty.ReceiverToJettyHandler
 import com.seanshubin.template.scala.web.domain.HttpServer
 import org.eclipse.jetty.server.Server
